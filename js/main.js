@@ -1,7 +1,8 @@
-/* Ubaid Dental Surgery — Interactions */
+/* Defence Dental Gallery — Interactions */
 (function () {
   'use strict';
 
+  const WHATSAPP = '923224222533';
   const header = document.querySelector('.site-header');
   const toggle = document.querySelector('.nav-toggle');
   const navLinks = document.querySelector('.nav-links');
@@ -69,7 +70,7 @@
       const message = String(data.get('message') || '').trim();
 
       const lines = [
-        'Hello Ubaid Dental Surgery!',
+        'Hello Defence Dental Gallery!',
         'I would like to book an appointment.',
         '',
         `Name: ${name}`,
@@ -80,7 +81,7 @@
       ].filter(Boolean);
 
       const text = encodeURIComponent(lines.join('\n'));
-      window.open(`https://wa.me/923438898614?text=${text}`, '_blank');
+      window.open(`https://wa.me/${WHATSAPP}?text=${text}`, '_blank');
 
       const success = document.getElementById('form-success');
       if (success) success.classList.add('is-visible');
