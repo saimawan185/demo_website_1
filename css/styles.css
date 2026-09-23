@@ -171,13 +171,12 @@ button {
   inset: 0 0 auto;
   z-index: 100;
   height: var(--nav-h);
-  transition: background 0.4s var(--ease), box-shadow 0.4s var(--ease), backdrop-filter 0.4s var(--ease);
+  transition: background 0.4s var(--ease), box-shadow 0.4s var(--ease);
 }
 
 .site-header.is-scrolled,
 .site-header.solid {
-  background: rgba(238, 241, 235, 0.94);
-  backdrop-filter: blur(16px);
+  background: rgba(238, 241, 235, 0.97);
   box-shadow: 0 1px 0 var(--line);
 }
 
@@ -196,11 +195,13 @@ button {
 }
 
 .nav-inner {
-  height: 100%;
+  height: var(--nav-h);
   display: flex;
   align-items: center;
   justify-content: space-between;
   gap: 1.5rem;
+  position: relative;
+  z-index: 110;
 }
 
 .brand {
@@ -306,9 +307,16 @@ button {
 @media (max-width: 959px) {
   .nav-toggle { display: flex; }
 
+  /* Full-screen overlay must escape the fixed header (no backdrop-filter / transform on ancestors) */
   .nav-links {
     position: fixed;
-    inset: 0;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    width: 100%;
+    height: 100%;
+    min-height: 100svh;
     z-index: 105;
     display: flex;
     flex-direction: column;
@@ -318,21 +326,33 @@ button {
     background: var(--stone);
     opacity: 0;
     visibility: hidden;
-    transform: translateY(-1rem);
+    pointer-events: none;
+    transform: translateY(-0.75rem);
     transition: opacity 0.4s var(--ease), visibility 0.4s, transform 0.4s var(--ease);
-    padding: 2rem;
+    padding: calc(var(--nav-h) + 1rem) 2rem 2rem;
   }
 
   .nav-links.is-open {
     opacity: 1;
     visibility: visible;
+    pointer-events: auto;
     transform: translateY(0);
   }
 
   .nav-link {
-    color: var(--forest);
-    font-size: 1.1rem;
+    color: var(--forest) !important;
+    font-size: 1.15rem;
     text-align: center;
+  }
+
+  .nav-link::after {
+    left: 50%;
+    transform: translateX(-50%);
+  }
+
+  .nav-link:hover::after,
+  .nav-link.is-active::after {
+    width: 100%;
   }
 
   .nav-links .btn {
@@ -342,7 +362,18 @@ button {
 
   .site-header:not(.is-scrolled):not(.solid) .nav-toggle { color: var(--white); }
   .site-header.is-scrolled .nav-toggle,
-  .site-header.solid .nav-toggle { color: var(--forest); }
+  .site-header.solid .nav-toggle,
+  .site-header:has(.nav-links.is-open) .nav-toggle {
+    color: var(--forest);
+  }
+
+  .site-header:has(.nav-links.is-open) .brand-name {
+    color: var(--forest);
+  }
+
+  .site-header:has(.nav-links.is-open) .brand-tag {
+    color: var(--sage);
+  }
 }
 
 /* Hero */
