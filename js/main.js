@@ -33,7 +33,7 @@
     });
   }
 
-  const reveals = document.querySelectorAll('.reveal');
+  const reveals = document.querySelectorAll('.reveal, .reveal-left, .reveal-right, .reveal-scale');
   if ('IntersectionObserver' in window) {
     const io = new IntersectionObserver(
       (entries) => {
