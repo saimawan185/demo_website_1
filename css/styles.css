@@ -278,8 +278,140 @@ button { cursor: pointer; }
 
 .hero-content {
   position: relative;
-  z-index: 2;
+  z-index: 3;
   padding: calc(var(--nav-h) + 1.5rem) 0 3rem;
+}
+
+/* Happy walking dog on home hero */
+.hero-dog {
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: clamp(1.25rem, 4vw, 2.5rem);
+  z-index: 2;
+  height: clamp(64px, 12vw, 96px);
+  pointer-events: none;
+  overflow: hidden;
+}
+
+.hero-dog-walker {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: clamp(88px, 18vw, 130px);
+  animation: dogWalk 4.8s cubic-bezier(0.33, 0.9, 0.35, 1) forwards;
+}
+
+.hero-dog-svg {
+  width: 100%;
+  height: auto;
+  display: block;
+  filter: drop-shadow(0 8px 16px rgba(0, 0, 0, 0.25));
+}
+
+.dog-body {
+  transform-origin: 60px 40px;
+  animation: dogBob 0.38s ease-in-out 12 alternate;
+  animation-fill-mode: forwards;
+}
+
+.dog-leg {
+  transform-origin: center top;
+}
+
+.dog-leg-1,
+.dog-leg-4 {
+  animation: dogLegA 0.38s ease-in-out 12 alternate;
+  animation-fill-mode: forwards;
+}
+
+.dog-leg-2,
+.dog-leg-3 {
+  animation: dogLegB 0.38s ease-in-out 12 alternate;
+  animation-fill-mode: forwards;
+}
+
+.dog-tail {
+  transform-origin: 30px 38px;
+  animation: dogTail 0.28s ease-in-out 16 alternate;
+  animation-fill-mode: forwards;
+}
+
+.dog-shadow {
+  animation: dogShadow 0.38s ease-in-out 12 alternate;
+  animation-fill-mode: forwards;
+}
+
+@keyframes dogWalk {
+  0% { transform: translateX(-20vw); }
+  100% { transform: translateX(62vw); }
+}
+
+@keyframes dogBob {
+  from { transform: translateY(0); }
+  to { transform: translateY(-5px); }
+}
+
+@keyframes dogLegA {
+  from { transform: rotate(18deg); }
+  to { transform: rotate(-18deg); }
+}
+
+@keyframes dogLegB {
+  from { transform: rotate(-18deg); }
+  to { transform: rotate(18deg); }
+}
+
+@keyframes dogTail {
+  from { transform: rotate(-12deg); }
+  to { transform: rotate(18deg); }
+}
+
+@keyframes dogShadow {
+  from { opacity: 0.35; transform: scaleX(1); }
+  to { opacity: 0.2; transform: scaleX(0.88); }
+}
+
+@media (max-width: 700px) {
+  @keyframes dogWalk {
+    0% { transform: translateX(-35vw); }
+    100% { transform: translateX(48vw); }
+  }
+
+  .hero-dog {
+    bottom: 1rem;
+    height: 58px;
+  }
+
+  .hero-dog-walker {
+    width: 78px;
+  }
+}
+
+@media (min-width: 1100px) {
+  @keyframes dogWalk {
+    0% { transform: translateX(-12vw); }
+    100% { transform: translateX(68vw); }
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .hero-dog-walker,
+  .dog-body,
+  .dog-leg-1,
+  .dog-leg-2,
+  .dog-leg-3,
+  .dog-leg-4,
+  .dog-tail,
+  .dog-shadow {
+    animation: none !important;
+  }
+
+  .hero-dog-walker {
+    left: auto;
+    right: 8%;
+    transform: none;
+  }
 }
 .hero .eyebrow { animation: fadeUp 0.8s var(--ease) both; color: var(--amber); }
 .hero-brand {
@@ -610,6 +742,13 @@ button { cursor: pointer; }
 }
 @media (min-width: 800px) {
   .footer-grid { grid-template-columns: 1.4fr 1fr 1fr 1fr; gap: 2.5rem; }
+}
+@media (max-width: 799px) {
+  .footer-grid { grid-template-columns: 1fr 1fr; gap: 2rem 1.5rem; }
+  .footer-brand { grid-column: 1 / -1; }
+}
+@media (max-width: 480px) {
+  .footer-grid { grid-template-columns: 1fr; }
 }
 .footer-brand .brand-name { color: var(--white); font-size: 1.55rem; }
 .footer-brand .brand-tag { color: var(--amber); margin-bottom: 1rem; }
