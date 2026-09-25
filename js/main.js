@@ -1,8 +1,8 @@
-/* Defence Dental Gallery — Interactions */
+/* Pawtopia Pet Clinic — Interactions */
 (function () {
   'use strict';
 
-  const WHATSAPP = '923224222533';
+  const WHATSAPP = '923369335048';
   const header = document.querySelector('.site-header');
   const toggle = document.querySelector('.nav-toggle');
   const navLinks = document.querySelector('.nav-links');
@@ -22,7 +22,6 @@
       toggle.setAttribute('aria-expanded', open ? 'true' : 'false');
       toggle.setAttribute('aria-label', open ? 'Close menu' : 'Open menu');
       document.body.style.overflow = open ? 'hidden' : '';
-      document.body.classList.toggle('nav-open', open);
     });
 
     navLinks.querySelectorAll('a').forEach((link) => {
@@ -32,7 +31,6 @@
         toggle.setAttribute('aria-expanded', 'false');
         toggle.setAttribute('aria-label', 'Open menu');
         document.body.style.overflow = '';
-        document.body.classList.remove('nav-open');
       });
     });
   }
@@ -58,35 +56,25 @@
   const dayMap = ['Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday'];
   const today = dayMap[new Date().getDay()];
   document.querySelectorAll('.hours-table tr[data-day]').forEach((row) => {
-    if (row.getAttribute('data-day') === today) {
-      row.classList.add('today');
-    }
+    if (row.getAttribute('data-day') === today) row.classList.add('today');
   });
 
   if (form) {
     form.addEventListener('submit', (e) => {
       e.preventDefault();
       const data = new FormData(form);
-      const name = String(data.get('name') || '').trim();
-      const phone = String(data.get('phone') || '').trim();
-      const service = String(data.get('service') || '').trim();
-      const date = String(data.get('date') || '').trim();
-      const message = String(data.get('message') || '').trim();
-
       const lines = [
-        'Hello Defence Dental Gallery!',
+        'Hello Pawtopia Pet Clinic!',
         'I would like to book an appointment.',
         '',
-        `Name: ${name}`,
-        `Phone: ${phone}`,
-        `Service: ${service}`,
-        date ? `Preferred date: ${date}` : '',
-        message ? `Notes: ${message}` : '',
+        `Name: ${String(data.get('name') || '').trim()}`,
+        `Phone: ${String(data.get('phone') || '').trim()}`,
+        `Service: ${String(data.get('service') || '').trim()}`,
+        data.get('date') ? `Preferred date: ${String(data.get('date')).trim()}` : '',
+        data.get('message') ? `Notes: ${String(data.get('message')).trim()}` : '',
       ].filter(Boolean);
 
-      const text = encodeURIComponent(lines.join('\n'));
-      window.open(`https://wa.me/${WHATSAPP}?text=${text}`, '_blank');
-
+      window.open(`https://wa.me/${WHATSAPP}?text=${encodeURIComponent(lines.join('\n'))}`, '_blank');
       const success = document.getElementById('form-success');
       if (success) success.classList.add('is-visible');
       form.reset();
