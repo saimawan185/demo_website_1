@@ -3,18 +3,38 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Page not found | Pawtopia Pet Clinic</title>
+  <title>Page not found | Muneeb Veterinary Complex</title>
   <meta name="robots" content="noindex" />
+  <meta name="theme-color" content="#1b3a2f" />
   <link rel="stylesheet" href="css/styles.css" />
 </head>
 <body>
-  <main class="section" style="min-height:100svh;display:grid;place-items:center;text-align:center">
-    <div class="container">
-      <p class="eyebrow">404</p>
-      <h1 class="display display-md">This page isn’t here.</h1>
-      <p class="lead" style="margin:1rem auto 2rem">Return to Pawtopia Pet Clinic and continue from the homepage.</p>
-      <a class="btn btn-primary" href="index.html">Back to Home</a>
+  <header class="site-header solid">
+    <div class="container nav-inner">
+      <a href="index.html" class="brand" aria-label="Muneeb Veterinary Complex home">
+        <span class="brand-name">Muneeb</span>
+        <span class="brand-tag">Veterinary Complex · DHA 6</span>
+      </a>
+      <nav class="nav-links" aria-label="Primary">
+        <a href="index.html">Home</a>
+        <a href="services.html">Services</a>
+        <a href="contact.html">Contact</a>
+      </nav>
     </div>
+  </header>
+  <main>
+    <section class="page-hero" style="min-height: 70vh; display: flex; align-items: center;">
+      <div class="container">
+        <p class="eyebrow">404</p>
+        <h1>This page wandered off.</h1>
+        <p>The link may be outdated — head back home or book a visit on WhatsApp.</p>
+        <div class="btn-group" style="margin-top: 1.5rem;">
+          <a class="btn btn-primary" href="index.html">Back to Home</a>
+          <a class="btn btn-ghost" href="https://wa.me/923174016217" target="_blank" rel="noopener">WhatsApp</a>
+        </div>
+      </div>
+    </section>
   </main>
+  <script src="js/main.js"></script>
 </body>
 </html>

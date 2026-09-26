@@ -1,8 +1,8 @@
-/* Pawtopia Pet Clinic — Interactions */
+/* Muneeb Veterinary Complex — Interactions */
 (function () {
   'use strict';
 
-  const WHATSAPP = '923369335048';
+  const WHATSAPP = '923174016217';
   const header = document.querySelector('.site-header');
   const toggle = document.querySelector('.nav-toggle');
   const navLinks = document.querySelector('.nav-links');
@@ -64,7 +64,7 @@
       e.preventDefault();
       const data = new FormData(form);
       const lines = [
-        'Hello Pawtopia Pet Clinic!',
+        'Hello Muneeb Veterinary Complex!',
         'I would like to book an appointment.',
         '',
         `Name: ${String(data.get('name') || '').trim()}`,
