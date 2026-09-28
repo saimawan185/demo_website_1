@@ -1,8 +1,8 @@
-/* Smile Club Dental Clinic — Interactions */
+/* Dentista — Interactions */
 (function () {
   'use strict';
 
-  const WHATSAPP = '923164001662';
+  const WHATSAPP = '923254187846';
   const header = document.querySelector('.site-header');
   const toggle = document.querySelector('.nav-toggle');
   const navLinks = document.querySelector('.nav-links');
@@ -64,7 +64,7 @@
       e.preventDefault();
       const data = new FormData(form);
       const lines = [
-        'Hello Smile Club Dental Clinic!',
+        'Hello Dentista!',
         'I would like to book an appointment.',
         '',
         `Name: ${String(data.get('name') || '').trim()}`,
