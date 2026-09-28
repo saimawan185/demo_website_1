@@ -1,8 +1,8 @@
-/* Muneeb Veterinary Complex — Interactions */
+/* Smile Club Dental Clinic — Interactions */
 (function () {
   'use strict';
 
-  const WHATSAPP = '923174016217';
+  const WHATSAPP = '923164001662';
   const header = document.querySelector('.site-header');
   const toggle = document.querySelector('.nav-toggle');
   const navLinks = document.querySelector('.nav-links');
@@ -64,7 +64,7 @@
       e.preventDefault();
       const data = new FormData(form);
       const lines = [
-        'Hello Muneeb Veterinary Complex!',
+        'Hello Smile Club Dental Clinic!',
         'I would like to book an appointment.',
         '',
         `Name: ${String(data.get('name') || '').trim()}`,
