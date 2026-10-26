@@ -1,8 +1,8 @@
-/* Dentista — Interactions */
+/* Amrij Salon & SPA — Interactions */
 (function () {
   'use strict';
 
-  const WHATSAPP = '923254187846';
+  const WHATSAPP = '923357864466';
   const header = document.querySelector('.site-header');
   const toggle = document.querySelector('.nav-toggle');
   const navLinks = document.querySelector('.nav-links');
@@ -64,7 +64,7 @@
       e.preventDefault();
       const data = new FormData(form);
       const lines = [
-        'Hello Dentista!',
+        'Hello Amrij Salon & SPA!',
         'I would like to book an appointment.',
         '',
         `Name: ${String(data.get('name') || '').trim()}`,
